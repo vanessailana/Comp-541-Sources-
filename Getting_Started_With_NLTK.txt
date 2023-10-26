@@ -64,29 +64,70 @@ Document 2: "Programming is fun."
 
 After count vectorization, the document-term matrix might look like this (assuming a vocabulary of ["I", "love", "programming", "is", "fun"]):
 
-Document	I	love	programming	is	fun
-Document 1	1	1	1	0	0
-Document 2	0	0	1	1	1
+Document	  I	love	programming	is	fun
+Document 1	1	 1	  1	           0	0
+Document 2	0	 0	  1	           1	1
 TF-IDF Vectorization
 TF-IDF, which stands for Term Frequency-Inverse Document Frequency, is another text preprocessing technique used in NLP. It considers both the frequency of a term within a specific document (Term Frequency) and the importance of that term in the entire corpus (Inverse Document Frequency).
 
 In TF-IDF vectorization:
-
 Each document is still represented as a vector.
 Each element of the vector corresponds to a unique word in the vocabulary.
 The value of each element is calculated based on both the term's frequency in the document and its importance in the corpus.
 Words that are common across many documents have lower TF-IDF scores, while words that are unique to a document have higher scores.
 TF-IDF is valuable for tasks that require assessing the importance of terms in distinguishing documents. For instance, it can be used for information retrieval or document classification.
 
+
+TF-IDF Vectorization
+TF-IDF, which stands for Term Frequency-Inverse Document Frequency, is a text preprocessing technique used in Natural Language Processing (NLP) to represent text data as numerical values. It considers both the frequency of a term within a specific document (Term Frequency) and the importance of that term in the entire corpus (Inverse Document Frequency).
+
+In TF-IDF vectorization:
+
+Term Frequency (TF):
+Term Frequency measures how often a term appears within a specific document.
+For each document, TF calculates the frequency of each term (word) and represents it as a numerical value.
+High TF values indicate that a term occurs frequently within the document. In simple terms, it's the ratio of how many times a term appears 
+in a document to the total number of terms in that document.
+
+Inverse Document Frequency (IDF):
+Inverse Document Frequency measures the importance of a term in the entire corpus.
+It assigns a weight to each term based on how often it appears in the entire collection of documents.
+Terms that are common across many documents receive a lower IDF score, while terms that are unique to specific documents receive a higher score.
+
+Combining TF and IDF:
+TF and IDF are combined to calculate the TF-IDF score for each term in each document.
+The TF-IDF score reflects both how frequently a term occurs in a document (TF) and how important that term is in distinguishing the document from the rest of the corpus (IDF).
+Using TF-IDF Vectors:
+Each document is represented as a vector of TF-IDF scores, where each element in the vector corresponds to a unique term.
+The value of each element represents the TF-IDF score of the corresponding term in the document.
+Documents with similar content will have similar TF-IDF vectors.
+
+TF-IDF = (Term Frequency in the Document) x (Inverse Document Frequency in the Corpus)
+
+Term Frequency (TF):
+TF measures how often a word (term) appears in a specific document.
+To calculate TF, you count the number of times a term occurs in the document. For example, if the term "apple" appears 5 times in a document, its TF for that document is 5.
+TF is a way of quantifying the importance of a word within that document.
+Inverse Document Frequency (IDF):
+
+IDF measures how unique or rare a word is across all the documents in the corpus.
+To calculate IDF, you take the logarithm of the total number of documents in the corpus divided by the number of documents containing the term, and then add 1 to the result.
+The formula for IDF is: IDF = log((Total Number of Documents) / (Number of Documents Containing the Term)) + 1
+IDF is a way of quantifying the importance of a word in the context of the entire collection of documents.
+Combining TF and IDF:
+
+To calculate TF-IDF, you simply multiply the TF value for a term in a specific document by the IDF value for that term.
+The resulting TF-IDF score tells you how important or distinctive that term is within that document and the corpus as a whole.
+Words with higher TF-IDF scores are those that are both relevant to the document and relatively rare in the corpus, making them more significant.
+
+
 Building a Text Classifier
-Building a text classifier involves using machine learning techniques to categorize text documents into predefined classes or categories based on their content. In the context of NLTK and NLP, you can leverage NLTK's features for text preprocessing, feature extraction (like Count Vectorization or TF-IDF Vectorization), and machine learning algorithms to create a text classifier.
-
+- Building a text classifier involves using machine learning techniques to categorize text documents into predefined classes or categories based on their content. In the context of NLTK and NLP, you can leverage - NLTK's features for text preprocessing, feature extraction (like Count Vectorization or TF-IDF Vectorization), and machine learning algorithms to create a text classifier.
 The steps for building a text classifier generally include:
-
-Data Preparation: Collect and preprocess your text data, including tokenization, stopword removal, and vectorization.
-Feature Extraction: Choose a suitable feature extraction technique (such as Count Vectorization or TF-IDF Vectorization) to convert text data into numerical features.
-Model Selection: Select a machine learning algorithm or model that is appropriate for your classification task (e.g., Naive Bayes, Support Vector Machines, or deep learning models like LSTM or BERT).
-Training: Train your classifier on a labeled dataset, where each document is associated with a known category.
-Evaluation: Assess the performance of your classifier using evaluation metrics like accuracy, precision, recall, and F1-score.
-Prediction: Use the trained model to classify new, unlabeled documents into categories.
-Building a text classifier with NLTK allows you to automate the process of categorizing and organizing large volumes of text data, making it a valuable tool for various applications, including sentiment analysis, topic classification, and spam detection.
+  1. Data Preparation: Collect and preprocess your text data, including tokenization, stopword removal, and vectorization.
+  2. Feature Extraction: Choose a suitable feature extraction technique (such as Count Vectorization or TF-IDF Vectorization) to convert text data into numerical features.
+  3. Model Selection: Select a machine learning algorithm or model that is appropriate for your classification task (e.g., Naive Bayes, Support Vector Machines, or deep learning models like LSTM or BERT).
+  4. Training: Train your classifier on a labeled dataset, where each document is associated with a known category.
+  5. Evaluation: Assess the performance of your classifier using evaluation metrics like accuracy, precision, recall, and F1-score.
+  6. Prediction: Use the trained model to classify new, unlabeled documents into categories.
+  7. Building a text classifier with NLTK allows you to automate the process of categorizing and organizing large volumes of text data, making it a valuable tool for various applications, including sentiment analysis, topic classification, and spam detection.

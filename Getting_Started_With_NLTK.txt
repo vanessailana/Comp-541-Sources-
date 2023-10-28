@@ -104,21 +104,24 @@ Documents with similar content will have similar TF-IDF vectors.
 
 TF-IDF = (Term Frequency in the Document) x (Inverse Document Frequency in the Corpus)
 
-Term Frequency (TF):
-TF measures how often a word (term) appears in a specific document.
-To calculate TF, you count the number of times a term occurs in the document. For example, if the term "apple" appears 5 times in a document, its TF for that document is 5.
-TF is a way of quantifying the importance of a word within that document.
-Inverse Document Frequency (IDF):
+In TF-IDF vectorization:
+Term Frequency: TF of a term or word is the number of times the term appears in a document compared to the total number of words in the document.
 
-IDF measures how unique or rare a word is across all the documents in the corpus.
-To calculate IDF, you take the logarithm of the total number of documents in the corpus divided by the number of documents containing the term, and then add 1 to the result.
-The formula for IDF is: IDF = log((Total Number of Documents) / (Number of Documents Containing the Term)) + 1
-IDF is a way of quantifying the importance of a word in the context of the entire collection of documents.
-Combining TF and IDF:
+Inverse Document Frequency: IDF of a term reflects the proportion of documents in the corpus that contain the term. Words unique to a small percentage of documents (e.g., technical jargon terms) receive higher importance values than words common across all documents (e.g., a, the, and). (It is the logarithim) 
 
-To calculate TF-IDF, you simply multiply the TF value for a term in a specific document by the IDF value for that term.
+
+- To calculate TF-IDF, you simply multiply the TF value for a term in a specific document by the IDF value for that term.
 The resulting TF-IDF score tells you how important or distinctive that term is within that document and the corpus as a whole.
 Words with higher TF-IDF scores are those that are both relevant to the document and relatively rare in the corpus, making them more significant.
+
+- TF (Term Frequency): This measures how often a term occurs in a specific document. The more frequently a term appears in a document, the higher its TF value for that document.
+
+- IDF (Inverse Document Frequency): This measures how unique or rare a term is across the entire corpus. Terms that are common in many documents have a low IDF value, while terms that are rare have a high IDF value. It's calculated as the logarithm of the total number of documents divided by the number of documents containing the term.
+
+TF-IDF Score: To calculate the TF-IDF score for a term in a document, you multiply the TF value for that term in the document by the IDF value for that term in the corpus. The resulting TF-IDF score is a measure of how important or distinctive that term is within that specific document and the corpus as a whole.
+
+- Significance: Words with higher TF-IDF scores are indeed considered more significant in the context of a specific document. They are both relevant to that document (high TF) and relatively rare in the corpus (high IDF). This is why TF-IDF is often used in tasks like text classification, information retrieval, and document ranking, as it helps identify terms that are characteristic of or discriminate a particular document from others in the collection.
+
 
 
 Building a Text Classifier
